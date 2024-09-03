@@ -1,0 +1,96 @@
+CREATE TABLE "item" (
+  "id_item" integer,
+  "item_name" varchar,
+  "item_category" varchar,
+  "type" varchar,
+  PRIMARY KEY ("id_item")
+);
+
+CREATE TABLE "ingredients" (
+  "id_ing" integer,
+  "ing_name" varchar,
+  "measure_unit" varchar,
+  "unit_price" integer,
+  PRIMARY KEY ("id_ing")
+);
+
+CREATE TABLE "recipe" (
+  "id_recipe" integer,
+  "id_item" integer,
+  "id_ing" integer,
+  "quantity" float,
+  PRIMARY KEY ("id_recipe"),
+  CONSTRAINT "FK_recipe.id_item"
+    FOREIGN KEY ("id_item")
+      REFERENCES "item"("id_item"),
+  CONSTRAINT "FK_recipe.id_ing"
+    FOREIGN KEY ("id_ing")
+      REFERENCES "ingredients"("id_ing")
+);
+
+CREATE TABLE "saltria_store" (
+  "id_store" integer,
+  "name_store" varchar,
+  "phone_store" integer,
+  "address_store" varchar,
+  PRIMARY KEY ("id_store")
+);
+
+CREATE TABLE "order" (
+  "id_order" integer,
+  "order_quantity" integer,
+  "date" date,
+  "id_store" integer,
+  PRIMARY KEY ("id_order"),
+  CONSTRAINT "FK_order.id_store"
+    FOREIGN KEY ("id_store")
+      REFERENCES "saltria_store"("id_store")
+);
+
+CREATE TABLE "staff" (
+  "id_staff" integer,
+  "first_name" varchar,
+  "last_name" varchar,
+  "position" varchar,
+  "hourly_rate" float,
+  PRIMARY KEY ("id_staff")
+);
+
+CREATE TABLE "shift" (
+  "id_shift" integer,
+  "day_of_week" varchar,
+  "start_time" time,
+  "end_time" time,
+  PRIMARY KEY ("id_shift")
+);
+
+CREATE TABLE "rota" (
+  "id_rota" Integer,
+  "id_order" integer,
+  "id_shift" integer,
+  "id_staff" integer,
+  PRIMARY KEY ("id_rota"),
+  CONSTRAINT "FK_rota.id_order"
+    FOREIGN KEY ("id_order")
+      REFERENCES "order"("id_order"),
+  CONSTRAINT "FK_rota.id_staff"
+    FOREIGN KEY ("id_staff")
+      REFERENCES "staff"("id_staff"),
+  CONSTRAINT "FK_rota.id_shift"
+    FOREIGN KEY ("id_shift")
+      REFERENCES "shift"("id_shift")
+);
+
+CREATE TABLE "order_item" (
+  "id_order_item" integer,
+  "id_order" integer,
+  "id_item" integer,
+  PRIMARY KEY ("id_order_item"),
+  CONSTRAINT "FK_order_item.id_item"
+    FOREIGN KEY ("id_item")
+      REFERENCES "item"("id_item"),
+  CONSTRAINT "FK_order_item.id_order"
+    FOREIGN KEY ("id_order")
+      REFERENCES "order"("id_order")
+);
+

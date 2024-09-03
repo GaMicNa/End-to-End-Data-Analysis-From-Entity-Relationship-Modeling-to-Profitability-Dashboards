@@ -1,0 +1,20 @@
+id_staff;first_name;last_name;w_position;hourly_rate
+1;Maria;Gonzalez;manager;22
+2;Juan;Martinez;manager;20
+3;Ana;Lopez;head baker;18
+4;Carlos;Rodriguez;head baker;18
+5;Laura;Perez;head baker;18
+6;Pedro;Fernandez;head baker;18
+7;Carmen;Sanchez;assistant baker;15
+8;Jose;Ramirez;assistant baker;15
+9;Patricia;Torres;assistant baker;15
+10;Luis;Jimenez;assistant baker;15
+11;Sofia;Morales;kitchen assistant;12
+12;Antonio;Ruiz;kitchen assistant;13
+13;Isabel;Herrera;kitchen assistant;12
+14;Javier;Diaz;kitchen assistant;12
+15;Marta;Romero;kitchen assistant;12
+16;Daniel;Navarro;kitchen assistant;13
+17;Mauricio;Iriarte;kitchen assistant;12
+18;Raquel;Hernandez;kitchen assistant;12
+19;Alejandro;Vargas;sucursal driver;7

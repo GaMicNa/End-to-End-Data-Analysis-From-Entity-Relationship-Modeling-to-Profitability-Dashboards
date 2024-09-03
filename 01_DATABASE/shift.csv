@@ -1,0 +1,15 @@
+id_shift,day_of_week,start_time,end_time
+sh0001,lunes,'06:30','10:30'
+sh0002,lunes,10:30,14:30
+sh0003,martes,06:30,10:30
+sh0004,martes,10:30,14:30
+sh0005,miercoles,06:30,10:30
+sh0006,miercoles,10:30,14:30
+sh0007,jueves,06:30,10:30
+sh0008,jueves,10:30,14:30
+sh0009,viernes,06:30,10:30
+sh0010,viernes,10:30,14:30
+sh0011,sabado,06:30,10:30
+sh0012,sabado,10:30,14:30
+sh0013,domingo,06:30,10:30
+sh0014,domingo,10:30,14:30
