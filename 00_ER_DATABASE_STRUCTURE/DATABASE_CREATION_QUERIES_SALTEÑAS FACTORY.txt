@@ -10,7 +10,7 @@ CREATE TABLE "ingredients" (
   "id_ing" integer,
   "ing_name" varchar,
   "measure_unit" varchar,
-  "unit_price" integer,
+  "unit_price" numeric,
   PRIMARY KEY ("id_ing")
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE "recipe" (
   "id_recipe" integer,
   "id_item" integer,
   "id_ing" integer,
-  "quantity" float,
+  "quantity" numeric,
   PRIMARY KEY ("id_recipe"),
   CONSTRAINT "FK_recipe.id_item"
     FOREIGN KEY ("id_item")
@@ -28,18 +28,29 @@ CREATE TABLE "recipe" (
       REFERENCES "ingredients"("id_ing")
 );
 
+CREATE TABLE "staff" (
+  "id_staff" integer,
+  "first_name" varchar,
+  "last_name" varchar,
+  "w_position" varchar,
+  "hourly_rate" float,
+  PRIMARY KEY ("id_staff")
+);
+
 CREATE TABLE "saltria_store" (
   "id_store" integer,
   "name_store" varchar,
   "phone_store" integer,
   "address_store" varchar,
+  "city_store" varchar,
+  "lat" numeric,
+  "long" numeric,
   PRIMARY KEY ("id_store")
 );
 
 CREATE TABLE "order" (
   "id_order" integer,
-  "order_quantity" integer,
-  "date" date,
+  "created_at" date,
   "id_store" integer,
   PRIMARY KEY ("id_order"),
   CONSTRAINT "FK_order.id_store"
@@ -47,17 +58,8 @@ CREATE TABLE "order" (
       REFERENCES "saltria_store"("id_store")
 );
 
-CREATE TABLE "staff" (
-  "id_staff" integer,
-  "first_name" varchar,
-  "last_name" varchar,
-  "position" varchar,
-  "hourly_rate" float,
-  PRIMARY KEY ("id_staff")
-);
-
 CREATE TABLE "shift" (
-  "id_shift" integer,
+  "id_shift" varchar,
   "day_of_week" varchar,
   "start_time" time,
   "end_time" time,
@@ -65,17 +67,18 @@ CREATE TABLE "shift" (
 );
 
 CREATE TABLE "rota" (
-  "id_rota" Integer,
-  "id_order" integer,
-  "id_shift" integer,
+  "row_id" Integer,
+  "id_rota" varchar,
+  "id_date" date,
+  "id_shift" varchar,
   "id_staff" integer,
-  PRIMARY KEY ("id_rota"),
-  CONSTRAINT "FK_rota.id_order"
-    FOREIGN KEY ("id_order")
-      REFERENCES "order"("id_order"),
+  PRIMARY KEY ("row_id"),
   CONSTRAINT "FK_rota.id_staff"
     FOREIGN KEY ("id_staff")
       REFERENCES "staff"("id_staff"),
+  CONSTRAINT "FK_rota.id_date"
+    FOREIGN KEY ("id_date")
+      REFERENCES "order"("created_at"),
   CONSTRAINT "FK_rota.id_shift"
     FOREIGN KEY ("id_shift")
       REFERENCES "shift"("id_shift")
@@ -85,6 +88,7 @@ CREATE TABLE "order_item" (
   "id_order_item" integer,
   "id_order" integer,
   "id_item" integer,
+  "order_quantity" Integer,
   PRIMARY KEY ("id_order_item"),
   CONSTRAINT "FK_order_item.id_item"
     FOREIGN KEY ("id_item")
@@ -93,4 +97,3 @@ CREATE TABLE "order_item" (
     FOREIGN KEY ("id_order")
       REFERENCES "order"("id_order")
 );
-
