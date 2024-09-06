@@ -2,7 +2,7 @@
 
 Download: [Data](00_ER_DATABASE_STRUCTURE/SALTEÑAS_FACTORY.png) | [Handout](https://github.com/GaMicNa/RETAIL-E-COMMERCE-LOYALTY/blob/master/05_PDF/00_RETAIL%20E-COMERCE%20LOYALTY_.pdf) | [Dashboard](https://public.tableau.com/views/salteas_factory/Home?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-This project models the operations of a salteñas (very delicius and bolivian traditional morning brunch) factory using an Entity-Relationship Diagram, considering entities such as orders, branches, ingredients, employee shifts, and more. The goal is to analyze the data to propose improvements in operational efficiency and increase profit margins.
+This project models the operations of a salteñas (***very delicius and bolivian traditional morning brunch***) factory using an Entity-Relationship Diagram, considering entities such as orders, branches, ingredients, employee shifts, and more. The goal is to analyze the data to propose improvements in operational efficiency and increase profit margins.
 
 
 
